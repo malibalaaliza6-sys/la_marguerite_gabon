@@ -3,59 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Marguerite - Naturel. Street. Élégant.</title>
+  <title>Nos Produits - La Marguerite</title>
   <style>
     :root {
-      --marron-fonce: #5D4037;
-      --marron-clair: #A1887F;
-      --beige: #EFEBE9;
-      --doré: #D4AF37;
+      --marron-fonce: #4E342E;
+      --marron-clair: #8D6E63;
+      --beige: #F5F1EB;
+      --doré: #C9A961;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-    body { background: var(--beige); color: #333; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background: var(--beige); color: #3E2723; }
     
-    header { background: var(--marron-fonce); color: white; padding: 20px; }
+    header { background: var(--marron-fonce); color: white; padding: 18px 20px; position: sticky; top: 0; }
     nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
-    nav h1 { font-size: 26px; letter-spacing: 2px; }
-    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav h1 { font-size: 24px; letter-spacing: 3px; }
+    nav ul { list-style: none; display: flex; gap: 25px; }
     nav a { color: white; text-decoration: none; font-weight: 500; }
+    nav a:hover { color: var(--doré); }
     
-    .hero { 
-      background: linear-gradient(rgba(93,64,55,0.6), rgba(93,64,55,0.6)), url('karite.jpg') center/cover; 
-      height: 450px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      text-align: center;
-      color: white; 
-    }
-    .hero h2 { font-size: 42px; margin-bottom: 10px; }
-    .hero p { font-size: 18px; }
-    .btn-hero { 
-      background: var(--doré); 
-      color: var(--marron-fonce); 
-      padding: 14px 28px; 
-      text-decoration: none; 
-      border-radius: 8px; 
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 20px;
-    }
+    .page-title { text-align: center; padding: 50px 20px 20px; }
+    .page-title h2 { font-size: 36px; color: var(--marron-fonce); }
+    .page-title p { color: var(--marron-clair); margin-top: 10px; }
     
-    .categories { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
-    .categories h2 { text-align: center; color: var(--marron-fonce); margin-bottom: 40px; font-size: 32px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+    .grid { 
+      max-width: 1200px; 
+      margin: 40px auto; 
+      padding: 0 20px; 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 35px; 
+    }
     .card { 
       background: white; 
-      border-radius: 12px; 
+      border-radius: 15px; 
       overflow: hidden; 
-      box-shadow: 0 4px 15px rgba(93,64,55,0.1);
+      box-shadow: 0 5px 20px rgba(78,52,46,0.15);
       transition: 0.3s;
     }
-    .card:hover { transform: translateY(-8px); }
-    .card img { width: 100%; height: 240px; object-fit: cover; }
-    .card h3 { padding: 15px; color: var(--marron-fonce); }
-    .btn { 
+    .card:hover { transform: translateY(-10px); }
+    .card img { width: 100%; height: 280px; object-fit: cover; }
+    .card-content { padding: 20px; text-align: center; }
+    .card h3 { color: var(--marron-fonce); margin-bottom: 8px; font-size: 18px; }
+    .prix { color: var(--marron-clair); font-weight: bold; font-size: 20px; margin-bottom: 15px; }
+    .btn-whatsapp { 
       display: block; 
       background: var(--marron-clair); 
       color: white; 
@@ -63,6 +53,18 @@
       padding: 12px; 
       text-decoration: none; 
       font-weight: bold;
+      border-radius: 8px;
     }
+    .btn-whatsapp:hover { background: var(--marron-fonce); }
     
-    footer { background: var(--marron-fonce); color: white; text-align: center
+    footer { background: var(--marron-fonce); color: white; text-align: center; padding: 40px 20px; margin-top: 70px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <h1>LA MARGUERITE</h1>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href
