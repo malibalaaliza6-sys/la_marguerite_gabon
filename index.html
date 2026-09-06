@@ -1,332 +1,806 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>La Marguerite</title>
+<title>La Marguerite</title>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+<style>
 
-        :root {
-            --marron-fonce: #2b1812;
-            --marron-clair: #8a6248;
-            --beige: #e8d5b5;
-            --dore: #c9a45c;
-        }
+/* =========================
+   COULEURS
+========================= */
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+:root {
+    --marron-fonce: #2b1710;
+    --marron: #704832;
+    --marron-clair: #a98265;
+    --beige: #ead9bd;
+    --dore: #c9a35d;
+    --creme: #f2eadf;
+}
 
-        body {
-            background: var(--marron-fonce);
-            color: var(--dore);
-            font-family: "Worthy", "Libre Baskerville", serif;
-            font-size: 12px;
-            min-height: 100vh;
-        }
+/* =========================
+   BASE
+========================= */
 
-        header {
-            text-align: center;
-            padding: 35px 20px 20px;
-            border-bottom: 1px solid var(--marron-clair);
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .logo {
-            font-family: "Cochin", Georgia, serif;
-            color: var(--beige);
-            font-size: clamp(28px, 9vw, 52px);
-            letter-spacing: 4px;
-            font-weight: normal;
-        }
+body {
+    background: #ddd4ce;
+    font-family: "Worthy", Georgia, serif;
+    color: var(--marron-fonce);
+}
 
-        .slogan {
-            color: var(--dore);
-            margin-top: 8px;
-            letter-spacing: 2px;
-            font-size: 12px;
-        }
+/* Grande feuille du site */
 
-        /* PRODUIT PRINCIPAL */
+.page {
+    width: min(100%, 1000px);
+    margin: 30px auto;
+    background: var(--creme);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.20);
+}
 
-        .hero {
-            width: 100%;
-            padding: 35px 20px;
-            text-align: center;
-        }
+/* =========================
+   MENU
+========================= */
 
-        .product-image {
-            width: min(80vw, 360px);
-            height: min(80vw, 360px);
-            margin: auto;
-            border-radius: 20px;
-            overflow: hidden;
-            background: var(--marron-clair);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.45);
-        }
+header {
+    position: absolute;
+    top: 35px;
+    left: 5%;
+    right: 5%;
+    z-index: 10;
 
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+    height: 70px;
+    padding: 0 25px;
 
-        .product-title {
-            margin-top: 25px;
-            color: var(--beige);
-            font-family: "Cochin", Georgia, serif;
-            font-size: 24px;
-            letter-spacing: 2px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .product-description {
-            max-width: 500px;
-            margin: 12px auto;
-            line-height: 1.8;
-            color: var(--dore);
-            font-size: 12px;
-        }
+    border: 1px solid rgba(234,217,189,0.7);
+    border-radius: 20px;
 
-        /* SECTION BEAUTÉ */
+    background: rgba(43,23,16,0.45);
+    backdrop-filter: blur(10px);
+}
 
-        .beauty {
-            background: var(--marron-clair);
-            padding: 40px 20px;
-            margin-top: 10px;
-        }
+.logo {
+    font-family: "Cochin", Georgia, serif;
+    color: var(--beige);
+    font-size: 24px;
+    letter-spacing: 3px;
+}
 
-        .beauty h2 {
-            text-align: center;
-            font-family: "Cochin", Georgia, serif;
-            color: var(--beige);
-            font-size: 27px;
-            font-weight: normal;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-        }
+nav {
+    display: flex;
+    gap: 28px;
+}
 
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            max-width: 850px;
-            margin: auto;
-        }
+nav a {
+    color: var(--beige);
+    text-decoration: none;
+    font-size: 12px;
+}
 
-        .card {
-            background: var(--marron-fonce);
-            border: 1px solid rgba(201,164,92,0.4);
-            border-radius: 15px;
-            padding: 12px;
-            text-align: center;
-        }
+.cart {
+    color: var(--beige);
+    font-size: 22px;
+}
 
-        .card img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 10px;
-        }
+/* =========================
+   IMAGE PRINCIPALE
+========================= */
 
-        .card h3 {
-            color: var(--beige);
-            font-size: 12px;
-            margin-top: 12px;
-            letter-spacing: 1px;
-            font-weight: normal;
-        }
+.hero {
+    height: 560px;
+    position: relative;
 
-        /* CONTACT */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 
-        .contact {
-            text-align: center;
-            padding: 40px 20px;
-        }
+    background: var(--marron-fonce);
+    overflow: hidden;
+}
 
-        .contact h2 {
-            font-family: "Cochin", Georgia, serif;
-            color: var(--beige);
-            font-size: 24px;
-            font-weight: normal;
-            margin-bottom: 25px;
-        }
+/* Photo principale */
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
+.hero-photo {
+    position: absolute;
+    inset: 0;
 
-        .button {
-            display: inline-block;
-            padding: 13px 20px;
-            border: 1px solid var(--dore);
-            border-radius: 30px;
-            color: var(--dore);
-            text-decoration: none;
-            font-size: 12px;
-            transition: 0.3s;
-        }
+    width: 100%;
+    height: 100%;
 
-        .button:hover {
-            background: var(--dore);
-            color: var(--marron-fonce);
-        }
+    object-fit: cover;
+}
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid var(--marron-clair);
-            color: var(--dore);
-            font-size: 10px;
-        }
+/* Voile */
 
-        /* TÉLÉPHONE */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(43,23,16,0.20),
+        rgba(43,23,16,0.65)
+    );
+}
 
-        @media (max-width: 480px) {
+/* Nom géant */
 
-            header {
-                padding-top: 25px;
-            }
+.hero-title {
+    position: relative;
+    z-index: 2;
 
-            .logo {
-                font-size: 30px;
-                letter-spacing: 3px;
-            }
+    color: var(--beige);
+    font-family: "Cochin", Georgia, serif;
 
-            .hero {
-                padding: 25px 15px;
-            }
+    font-size: clamp(90px, 17vw, 190px);
+    font-weight: normal;
+    line-height: 0.8;
 
-            .product-image {
-                width: 85vw;
-                height: 85vw;
-            }
+    letter-spacing: -8px;
+    margin-bottom: -5px;
+}
 
-            .products {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
+/* =========================
+   PRESENTATION
+========================= */
 
-            .beauty {
-                padding: 30px 12px;
-            }
+.intro {
+    min-height: 390px;
+    padding: 60px 8%;
 
-            .contact {
-                padding: 30px 15px;
-            }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
 
-            .button {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-    </style>
+    background: var(--creme);
+}
+
+.intro-text h2 {
+    color: var(--marron-fonce);
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: normal;
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.intro-text p {
+    font-size: 12px;
+    line-height: 1.7;
+    max-width: 390px;
+    margin-bottom: 25px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+
+    border-radius: 25px;
+    border: 1px solid var(--marron);
+
+    color: var(--beige);
+    background: var(--marron);
+
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* Pot de beurre de karité */
+
+.jar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jar img {
+    width: min(100%, 400px);
+    height: 300px;
+
+    object-fit: contain;
+}
+
+/* =========================
+   BEAUTÉ
+========================= */
+
+.beauty {
+    padding: 60px 8%;
+    background: var(--creme);
+}
+
+.beauty-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    align-items: stretch;
+}
+
+.photo-card {
+    height: 300px;
+    overflow: hidden;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.beauty-text {
+    padding: 10px 15px;
+}
+
+.beauty-text h2 {
+    font-size: clamp(28px, 4vw, 45px);
+    line-height: 1;
+    font-weight: normal;
+    color: var(--marron-fonce);
+    margin-bottom: 20px;
+}
+
+.beauty-text p {
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* =========================
+   BIENFAITS
+========================= */
+
+.benefits {
+    position: relative;
+    padding: 60px 8%;
+    background: var(--marron-fonce);
+    color: var(--beige);
+    overflow: hidden;
+}
+
+.benefits::before {
+    content: "karité";
+
+    position: absolute;
+    left: 3%;
+    bottom: -20px;
+
+    font-family: "Cochin", Georgia, serif;
+    font-size: clamp(100px, 20vw, 230px);
+
+    color: rgba(201,163,93,0.15);
+}
+
+.benefits-content {
+    position: relative;
+    z-index: 2;
+}
+
+.benefits h2 {
+    font-family: "Cochin", Georgia, serif;
+    font-weight: normal;
+    font-size: clamp(32px, 5vw, 55px);
+    margin-bottom: 25px;
+}
+
+.benefits p {
+    max-width: 520px;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.benefit-list {
+    margin-top: 35px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.benefit {
+    border-top: 1px solid var(--dore);
+    padding-top: 15px;
+}
+
+.benefit h3 {
+    color: var(--dore);
+    font-size: 12px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.benefit span {
+    color: var(--beige);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* =========================
+   DERNIÈRES PHOTOS
+========================= */
+
+.gallery {
+    padding: 60px 8%;
+    background: var(--creme);
+}
+
+.gallery h2 {
+    font-family: "Cochin", Georgia, serif;
+    font-size: 42px;
+    font-weight: normal;
+    color: var(--marron-fonce);
+    margin-bottom: 30px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.gallery-item {
+    height: 300px;
+    overflow: hidden;
+}
+
+.gallery-item.large {
+    grid-column: span 2;
+    height: 350px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    padding: 55px 8%;
+    text-align: center;
+    background: var(--marron);
+}
+
+.contact h2 {
+    font-family: "Cochin", Georgia, serif;
+    color: var(--beige);
+    font-size: 38px;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.contact-button {
+    padding: 13px 25px;
+    border: 1px solid var(--dore);
+    border-radius: 30px;
+
+    color: var(--dore);
+    text-decoration: none;
+
+    font-size: 12px;
+}
+
+.contact-button:hover {
+    background: var(--dore);
+    color: var(--marron-fonce);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 20px;
+    text-align: center;
+
+    background: var(--marron-fonce);
+    color: var(--dore);
+
+    font-size: 10px;
+}
+
+/* =========================
+   TÉLÉPHONE
+========================= */
+
+@media (max-width: 700px) {
+
+    .page {
+        margin: 10px;
+        width: calc(100% - 20px);
+    }
+
+    header {
+        top: 25px;
+        height: 55px;
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .cart {
+        font-size: 18px;
+    }
+
+    .hero {
+        height: 430px;
+    }
+
+    .hero-title {
+        font-size: 23vw;
+        letter-spacing: -5px;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+        padding: 45px 25px;
+        gap: 20px;
+    }
+
+    .jar img {
+        height: 250px;
+    }
+
+    .beauty {
+        padding: 45px 20px;
+    }
+
+    .beauty-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .beauty-text {
+        grid-column: span 2;
+        order: -1;
+        padding-bottom: 20px;
+    }
+
+    .photo-card {
+        height: 220px;
+    }
+
+    .benefits {
+        padding: 45px 25px;
+    }
+
+    .benefit-list {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        padding: 45px 20px;
+    }
+
+    .gallery h2 {
+        font-size: 35px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item,
+    .gallery-item.large {
+        grid-column: span 1;
+        height: 260px;
+    }
+
+    .contact {
+        padding: 45px 20px;
+    }
+
+    .contact h2 {
+        font-size: 30px;
+    }
+
+    .contact-button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
+<div class="page">
+
+    <!-- MENU -->
+
     <header>
-        <div class="logo">LA MARGUERITE</div>
-        <div class="slogan">BEAUTÉ • ÉLÉGANCE • NATURE</div>
+
+        <div class="logo">
+            LA MARGUERITE
+        </div>
+
+        <nav>
+            <a href="#beauty">Beauté</a>
+            <a href="#benefits">Bienfaits</a>
+            <a href="#gallery">Collection</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="cart">
+            ♡
+        </div>
+
     </header>
 
 
-    <main>
+    <!-- GRANDE IMAGE -->
 
-        <!-- PRODUIT MIS EN AVANT -->
+    <section class="hero">
 
-        <section class="hero">
+        <img
+            class="hero-photo"
+            src="images/beurre-karite-hero.jpg"
+            alt="Beurre de karité">
 
-            <div class="product-image">
-                <img
-                    src="images/beurre-karite-principal.jpg"
-                    alt="Pot noir de beurre de karité">
-            </div>
+        <div class="hero-title">
+            La Marguerite
+        </div>
 
-            <h1 class="product-title">
-                BEURRE DE KARITÉ
-            </h1>
+    </section>
 
-            <p class="product-description">
-                Découvrez notre univers beauté autour du beurre de karité,
-                présenté avec élégance par La Marguerite.
+
+    <!-- PRESENTATION DU PRODUIT -->
+
+    <section class="intro">
+
+        <div class="intro-text">
+
+            <h2>
+                La beauté<br>
+                par le karité.
+            </h2>
+
+            <p>
+                La Marguerite met à l’honneur la beauté naturelle
+                à travers le beurre de karité.
+                Une matière précieuse, douce et généreuse,
+                pensée pour prendre soin de la peau au quotidien.
             </p>
 
-        </section>
+            <a href="#beauty" class="button">
+                Découvrir
+            </a>
+
+        </div>
 
 
-        <!-- BEAUTÉ -->
+        <div class="jar">
 
-        <section class="beauty">
+            <img
+                src="images/pot-beurre-karite-marron.jpg"
+                alt="Pot marron de beurre de karité">
 
-            <h2>BEAUTÉ</h2>
+        </div>
 
-            <div class="products">
+    </section>
 
-                <div class="card">
-                    <img
-                        src="images/beurre-karite-1.jpg"
-                        alt="Beurre de karité">
-                    <h3>BEURRE DE KARITÉ</h3>
+
+    <!-- BEAUTÉ -->
+
+    <section class="beauty" id="beauty">
+
+        <div class="beauty-grid">
+
+            <div class="photo-card">
+
+                <img
+                    src="images/beurre-karite-1.jpg"
+                    alt="Beurre de karité naturel">
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <img
+                    src="images/beurre-karite-2.jpg"
+                    alt="Soin au beurre de karité">
+
+            </div>
+
+
+            <div class="beauty-text">
+
+                <h2>
+                    Beauté<br>
+                    naturelle
+                </h2>
+
+                <p>
+                    Le beurre de karité est apprécié pour
+                    sa richesse et son côté nourrissant.
+                    Il peut accompagner les soins de la peau
+                    et contribuer à maintenir une sensation
+                    de douceur et de confort.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BIENFAITS -->
+
+    <section class="benefits" id="benefits">
+
+        <div class="benefits-content">
+
+            <h2>
+                Les bienfaits<br>
+                du beurre de karité
+            </h2>
+
+            <p>
+                Naturellement riche en lipides, le beurre de
+                karité est traditionnellement utilisé dans
+                les soins corporels pour ses propriétés
+                nourrissantes et protectrices.
+            </p>
+
+
+            <div class="benefit-list">
+
+                <div class="benefit">
+
+                    <h3>NOURRISSANT</h3>
+
+                    <span>
+                        Aide à nourrir la peau et à préserver
+                        son confort.
+                    </span>
+
                 </div>
 
-                <div class="card">
-                    <img
-                        src="images/beurre-karite-2.jpg"
-                        alt="Beurre de karité naturel">
-                    <h3>BEAUTÉ NATURELLE</h3>
+
+                <div class="benefit">
+
+                    <h3>DOUX</h3>
+
+                    <span>
+                        Une texture riche idéale pour les
+                        routines de soin.
+                    </span>
+
                 </div>
 
-                <div class="card">
-                    <img
-                        src="images/beurre-karite-3.jpg"
-                        alt="Beurre de karité">
-                    <h3>SOIN AU KARITÉ</h3>
+
+                <div class="benefit">
+
+                    <h3>PROTECTEUR</h3>
+
+                    <span>
+                        Aide à maintenir la barrière naturelle
+                        de la peau.
+                    </span>
+
                 </div>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
-        <!-- CONTACT -->
+    <!-- PHOTOS DU BAS -->
 
-        <section class="contact">
+    <section class="gallery" id="gallery">
 
-            <h2>NOUS CONTACTER</h2>
+        <h2>
+            L'univers<br>
+            La Marguerite
+        </h2>
 
-            <div class="buttons">
 
-                <a
-                    class="button"
-                    href="https://wa.me/24176412211"
-                    target="_blank">
-                    WHATSAPP
-                </a>
+        <div class="gallery-grid">
 
-                <a
-                    class="button"
-                    href="mailto:malibalaaliza6@gmail.com">
-                    E-MAIL
-                </a>
+            <div class="gallery-item">
+
+                <img
+                    src="images/beurre-karite-3.jpg"
+                    alt="Beurre de karité">
 
             </div>
 
-        </section>
 
-    </main>
+            <div class="gallery-item">
+
+                <img
+                    src="images/beurre-karite-4.jpg"
+                    alt="Soin naturel au karité">
+
+            </div>
+
+
+            <div class="gallery-item large">
+
+                <img
+                    src="images/beurre-karite-5.jpg"
+                    alt="Collection beurre de karité">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <h2>
+            Parlons-nous
+        </h2>
+
+        <div class="contact-buttons">
+
+            <a
+                class="contact-button"
+                href="https://wa.me/24176412211"
+                target="_blank">
+
+                WHATSAPP
+            </a>
+
+
+            <a
+                class="contact-button"
+                href="mailto:malibalaaliza6@gmail.com">
+
+                E-MAIL
+            </a>
+
+        </div>
+
+    </section>
 
 
     <footer>
-        © 2026 LA MARGUERITE — Tous droits réservés
+
+        © 2026 LA MARGUERITE
+
     </footer>
+
+</div>
 
 </body>
 </html>
